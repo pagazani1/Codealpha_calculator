@@ -1,0 +1,1 @@
+A sleek and user-friendly calculator web application developed using HTML, CSS, and JavaScript. It combines a clean interface with useful features like light/dark mode, keyboard support, and responsive design.
