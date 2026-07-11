@@ -1,0 +1,648 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+:root{
+
+    --bg:#edf4ff;
+    --card:#ffffff;
+    --text:#1f2937;
+    --btn:#f3f6fb;
+    --operator:#4f8ef7;
+    --equal:#2563eb;
+
+}
+
+body.dark{
+
+    --bg:#1f2434;
+    --card:#2f364a;
+    --text:#ffffff;
+    --btn:#454d63;
+    --operator:#63a2ff;
+    --equal:#3b82f6;
+
+}
+
+body{
+
+    background:linear-gradient(
+        to bottom,
+        var(--bg) 0%,
+        var(--bg) 87%,
+        #d5b08a 87%,
+        #c29368 100%
+    );
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    transition:.4s;
+
+    overflow:hidden;
+
+    color:var(--text);
+
+}
+
+/* ===========================
+   THEME BUTTON
+=========================== */
+
+#themeBtn{
+
+    position:fixed;
+
+    top:20px;
+
+    right:25px;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:white;
+
+    font-size:20px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+
+}
+
+/* ===========================
+   CLOCK
+=========================== */
+
+.clock{
+
+    position:fixed;
+
+    left:25px;
+
+    top:28px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    display:flex;
+
+    gap:8px;
+
+    align-items:center;
+
+}
+
+/* ===========================
+   CALCULATOR
+=========================== */
+
+.calculator{
+
+    width:330px;
+
+    background:var(--card);
+
+    margin-top:45px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+.calculator h2{
+
+    text-align:center;
+
+    font-size:32px;
+
+}
+
+.tagline{
+
+    text-align:center;
+
+    margin-top:6px;
+
+    margin-bottom:18px;
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+body.dark .tagline{
+
+    color:#cbd5e1;
+
+}
+
+/* ===========================
+   DISPLAY
+=========================== */
+
+.display{
+
+    background:var(--btn);
+
+    border-radius:16px;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+}
+
+#expression{
+
+    text-align:right;
+
+    color:#64748b;
+
+    min-height:22px;
+
+    font-size:17px;
+
+}
+
+body.dark #expression{
+
+    color:#cbd5e1;
+
+}
+
+#result{
+
+    text-align:right;
+
+    font-size:32px;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+   BUTTON GRID
+=========================== */
+
+.buttons{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+
+}
+
+.buttons button{
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    background:var(--btn);
+
+    color:var(--text);
+
+    transition:.2s;
+
+}
+
+.buttons button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.buttons button:active{
+
+    transform:scale(.95);
+
+}
+
+.operator{
+
+    background:var(--operator)!important;
+
+    color:white!important;
+
+}
+
+.equal{
+
+    background:var(--equal)!important;
+
+    color:white!important;
+
+}
+
+.special{
+
+    background:#ffd6d6!important;
+
+    color:#d83c3c!important;
+
+}
+
+.zero{
+
+    grid-column:span 2;
+
+}
+/* ===========================
+   NOTEBOOK
+=========================== */
+
+.notebook{
+
+    position:fixed;
+
+    left:60px;
+
+    top:140px;
+
+    width:180px;
+
+    height:240px;
+
+    background:white;
+
+    border-radius:15px;
+
+    opacity:.35;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+}
+
+.notebook::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:18px;
+
+    top:30px;
+
+    width:145px;
+
+    height:2px;
+
+    background:#cfe2ff;
+
+    box-shadow:
+    0 26px #cfe2ff,
+    0 52px #cfe2ff,
+    0 78px #cfe2ff,
+    0 104px #cfe2ff,
+    0 130px #cfe2ff,
+    0 156px #cfe2ff;
+
+}
+
+/* ===========================
+   STICKY NOTES
+=========================== */
+
+.sticky{
+
+    position:fixed;
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:8px;
+
+    opacity:.5;
+
+}
+
+.sticky1{
+
+    right:250px;
+
+    top:180px;
+
+    background:#fff2a6;
+
+    transform:rotate(-12deg);
+
+}
+
+.sticky2{
+
+    left:260px;
+
+    bottom:180px;
+
+    background:#ffd8df;
+
+    transform:rotate(10deg);
+
+}
+
+/* ===========================
+   COFFEE
+=========================== */
+
+.coffee{
+
+    position:fixed;
+
+    right:110px;
+
+    top:130px;
+
+    font-size:58px;
+
+    opacity:.5;
+
+}
+
+/* ===========================
+   PLANT
+=========================== */
+
+.plant{
+
+    position:fixed;
+
+    right:130px;
+
+    bottom:110px;
+
+    width:70px;
+
+    height:95px;
+
+    opacity:.6;
+
+}
+
+.pot{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:10px;
+
+    width:50px;
+
+    height:35px;
+
+    background:#d88a63;
+
+    border-radius:0 0 12px 12px;
+
+}
+
+.leaf{
+
+    position:absolute;
+
+    width:18px;
+
+    height:48px;
+
+    background:#62b962;
+
+    border-radius:50%;
+
+}
+
+.leaf1{
+
+    left:14px;
+
+    bottom:28px;
+
+    transform:rotate(-35deg);
+
+}
+
+.leaf2{
+
+    left:27px;
+
+    bottom:40px;
+
+}
+
+.leaf3{
+
+    left:40px;
+
+    bottom:28px;
+
+    transform:rotate(35deg);
+
+}
+
+/* ===========================
+   PENCIL
+=========================== */
+
+.pencil{
+
+    position:fixed;
+
+    left:110px;
+
+    bottom:120px;
+
+    width:150px;
+
+    height:10px;
+
+    background:#f7c948;
+
+    border-radius:20px;
+
+    transform:rotate(-35deg);
+
+    opacity:.55;
+
+}
+
+/* ===========================
+   RULER
+=========================== */
+
+.ruler{
+
+    position:fixed;
+
+    right:120px;
+
+    bottom:120px;
+
+    width:170px;
+
+    height:12px;
+
+    background:#ffe48f;
+
+    border-radius:20px;
+
+    transform:rotate(28deg);
+
+    opacity:.5;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    position:fixed;
+
+    bottom:12px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:13px;
+
+    color:#64748b;
+
+}
+
+body.dark footer{
+
+    color:#d1d5db;
+
+}
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+body.dark .notebook{
+
+    background:#424a61;
+
+}
+
+body.dark .notebook::before{
+
+    background:#66728f;
+
+    box-shadow:
+    0 26px #66728f,
+    0 52px #66728f,
+    0 78px #66728f,
+    0 104px #66728f,
+    0 130px #66728f,
+    0 156px #66728f;
+
+}
+
+body.dark .sticky1{
+
+    background:#7276c8;
+
+}
+
+body.dark .sticky2{
+
+    background:#8d6da3;
+
+}
+
+body.dark #themeBtn{
+
+    background:#40485f;
+
+    color:white;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+.notebook,
+.sticky,
+.coffee,
+.plant,
+.pencil,
+.ruler{
+
+    display:none;
+
+}
+
+.calculator{
+
+    width:95%;
+
+    max-width:330px;
+
+    margin-top:70px;
+
+}
+
+.clock{
+
+    font-size:15px;
+
+}
+
+}
+
+@media(max-height:750px){
+
+.calculator{
+
+    transform:scale(.92);
+
+    transform-origin:top center;
+
+    margin-top:20px;
+
+}
+
+}
